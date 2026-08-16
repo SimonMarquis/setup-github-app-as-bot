@@ -1,6 +1,6 @@
 # 🤖 Setup GitHub App as bot
 
-Generate a [GitHub App](https://docs.github.com/apps) access token and set up bot git identity for CI workflows.
+Generate a [GitHub App](https://docs.github.com/apps) access token with [`actions/create-github-app-token`](https://github.com/actions/create-github-app-token) and set up bot git identity for CI workflows.
 
 ## Usage
 
