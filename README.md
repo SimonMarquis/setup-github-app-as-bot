@@ -1,4 +1,4 @@
-# 🤖 Setup GitHub App as a bot
+# 🤖 Setup GitHub App as bot
 
 Generate a [GitHub App](https://docs.github.com/apps) access token and set up bot git identity for CI workflows.
 
@@ -18,7 +18,8 @@ steps:
 |----------------------|------------------------------------------------------------------------------|
 | `client-id`          | GitHub App client ID.                                                        |
 | `private-key`        | GitHub App private key.                                                      |
-| `configure-git-user` | When `true` (default), the bot identity will be set for the global git user. |
+| `gh-auth-login`      | When `true`, run `gh auth login` with the app token.                      |
+| `set-git-user`     | When `true` (default), configure the global git user as the bot.                           |
 
 | Output           | Description                                                               |
 |------------------|---------------------------------------------------------------------------|
