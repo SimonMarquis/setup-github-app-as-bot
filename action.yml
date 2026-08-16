@@ -59,6 +59,7 @@ runs:
       run: |
         gh auth login --with-token <<< "$TOKEN"
         gh auth status
+        gh auth setup-git
       shell: bash
       env:
         TOKEN: ${{ steps.app-token.outputs.token }}
