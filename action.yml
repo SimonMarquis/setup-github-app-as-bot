@@ -1,6 +1,10 @@
 name: 🤖 Setup GitHub App as bot
 description: Generate a GitHub App access token and set up bot git identity for CI workflows.
 
+branding:
+  icon: terminal
+  color: black
+
 inputs:
   client-id:
     description: GitHub App Client ID
