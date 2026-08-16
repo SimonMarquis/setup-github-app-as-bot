@@ -14,12 +14,12 @@ steps:
       private-key: ${{ secrets.APP_PRIVATE_KEY }}
 ```
 
-| Input                | Description                                                                  |
-|----------------------|------------------------------------------------------------------------------|
-| `client-id`          | GitHub App client ID.                                                        |
-| `private-key`        | GitHub App private key.                                                      |
-| `gh-auth-login`      | When `true`, run `gh auth login` with the app token.                      |
-| `set-git-user`     | When `true` (default), configure the global git user as the bot.                           |
+| Input                | Description                                                      |
+|----------------------|------------------------------------------------------------------|
+| `client-id`          | GitHub App client ID.                                            |
+| `private-key`        | GitHub App private key.                                          |
+| `gh-auth-login`      | When `true` (default), run `gh auth login` with the app token.   |
+| `set-git-user`       | When `true` (default), configure the global git user as the bot. |
 
 | Output           | Description                                                               |
 |------------------|---------------------------------------------------------------------------|
