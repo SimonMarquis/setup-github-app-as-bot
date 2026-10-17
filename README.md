@@ -14,12 +14,13 @@ steps:
       private-key: ${{ secrets.APP_PRIVATE_KEY }}
 ```
 
-| Input                | Description                                                      |
-|----------------------|------------------------------------------------------------------|
-| `client-id`          | GitHub App client ID.                                            |
-| `private-key`        | GitHub App private key.                                          |
-| `gh-auth-login`      | When `true` (default), run `gh auth login` with the app token.   |
-| `set-git-user`       | When `true` (default), configure the global git user as the bot. |
+| Input           | Description                                                                                                                                                          |
+|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `client-id`     | GitHub App client ID.                                                                                                                                                |
+| `private-key`   | GitHub App private key.                                                                                                                                              |
+| `gh-auth-login` | When `true` (default), run `gh auth login` with the app token.                                                                                                       |
+| `set-git-user`  | When `true` (default), configure the global git user as the bot.                                                                                                     |
+| `permission-*`  | Grant the token a permission level (`read`, `write`, etc.) as described in [`actions/create-github-app-token`](https://github.com/actions/create-github-app-token) |
 
 | Output           | Description                                                               |
 |------------------|---------------------------------------------------------------------------|

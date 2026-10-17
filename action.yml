@@ -20,6 +20,66 @@ inputs:
     description: When 'true', configure the global git user as the bot.
     required: false
     default: true
+  permission-actions:
+    description: Permission level for GitHub Actions workflows, runs, and artifacts. Can be set to 'read' or 'write'.
+    required: false
+  permission-artifact-metadata:
+    description: Permission level to create and retrieve build artifact metadata records. Can be set to 'read' or 'write'.
+    required: false
+  permission-attestations:
+    description: Permission level to create and retrieve repository attestations. Can be set to 'read' or 'write'.
+    required: false
+  permission-checks:
+    description: Permission level for checks on code. Can be set to 'read' or 'write'.
+    required: false
+  permission-contents:
+    description: Permission level for repository contents, commits, branches, downloads, releases, and merges. Can be set to 'read' or 'write'.
+    required: false
+  permission-deployments:
+    description: Permission level for deployments and deployment statuses. Can be set to 'read' or 'write'.
+    required: false
+  permission-environments:
+    description: Permission level for managing repository environments. Can be set to 'read' or 'write'.
+    required: false
+  permission-issues:
+    description: Permission level for issues and related comments, assignees, labels, and milestones. Can be set to 'read' or 'write'.
+    required: false
+  permission-merge-queues:
+    description: Permission level to manage the merge queues for a repository. Can be set to 'read' or 'write'.
+    required: false
+  permission-metadata:
+    description: Permission level to search repositories, list collaborators, and access repository metadata. Can be set to 'read' or 'write'.
+    required: false
+  permission-organization-packages:
+    description: Permission level for organization packages published to GitHub Packages. Can be set to 'read' or 'write'.
+    required: false
+  permission-organization-secrets:
+    description: Permission level to manage organization secrets. Can be set to 'read' or 'write'.
+    required: false
+  permission-packages:
+    description: Permission level for packages published to GitHub Packages. Can be set to 'read' or 'write'.
+    required: false
+  permission-pages:
+    description: Permission level to retrieve Pages statuses, configuration, and builds, and create new builds. Can be set to 'read' or 'write'.
+    required: false
+  permission-pull-requests:
+    description: Permission level for pull requests and related comments, assignees, labels, milestones, and merges. Can be set to 'read' or 'write'.
+    required: false
+  permission-repository-projects:
+    description: Permission level to manage repository projects, columns, and cards. Can be set to 'read', 'write', or 'admin'.
+    required: false
+  permission-secrets:
+    description: Permission level to manage repository secrets. Can be set to 'read' or 'write'.
+    required: false
+  permission-security-events:
+    description: Permission level to view and manage security events like code scanning alerts. Can be set to 'read' or 'write'.
+    required: false
+  permission-statuses:
+    description: Permission level for commit statuses. Can be set to 'read' or 'write'.
+    required: false
+  permission-vulnerability-alerts:
+    description: Permission level to manage Dependabot alerts. Can be set to 'read' or 'write'.
+    required: false
 
 outputs:
   app-slug:
@@ -49,6 +109,26 @@ runs:
       with:
         client-id: ${{ inputs.client-id }}
         private-key: ${{ inputs.private-key }}
+        permission-actions: ${{ inputs.permission-actions }}
+        permission-artifact-metadata: ${{ inputs.permission-artifact-metadata }}
+        permission-attestations: ${{ inputs.permission-attestations }}
+        permission-checks: ${{ inputs.permission-checks }}
+        permission-contents: ${{ inputs.permission-contents }}
+        permission-deployments: ${{ inputs.permission-deployments }}
+        permission-environments: ${{ inputs.permission-environments }}
+        permission-issues: ${{ inputs.permission-issues }}
+        permission-merge-queues: ${{ inputs.permission-merge-queues }}
+        permission-metadata: ${{ inputs.permission-metadata }}
+        permission-organization-packages: ${{ inputs.permission-organization-packages }}
+        permission-organization-secrets: ${{ inputs.permission-organization-secrets }}
+        permission-packages: ${{ inputs.permission-packages }}
+        permission-pages: ${{ inputs.permission-pages }}
+        permission-pull-requests: ${{ inputs.permission-pull-requests }}
+        permission-repository-projects: ${{ inputs.permission-repository-projects }}
+        permission-secrets: ${{ inputs.permission-secrets }}
+        permission-security-events: ${{ inputs.permission-security-events }}
+        permission-statuses: ${{ inputs.permission-statuses }}
+        permission-vulnerability-alerts: ${{ inputs.permission-vulnerability-alerts }}
     - id: get-app-user-id
       run: echo "user-id=$(gh api "/users/${APP_SLUG}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
       shell: bash
