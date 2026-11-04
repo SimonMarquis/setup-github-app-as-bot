@@ -13,7 +13,11 @@ inputs:
     description: GitHub App private key
     required: true
   gh-auth-login:
-    description: When 'true', run `gh auth login` with the app token.
+    description: When 'true', authenticate GitHub CLI with the app token.
+    required: false
+    default: true
+  gh-auth-setup-git:
+    description: When 'true', configure Git to use GitHub CLI as its credential helper for authenticated GitHub hosts.
     required: false
     default: true
   set-git-user:
@@ -104,6 +108,12 @@ outputs:
 runs:
   using: composite
   steps:
+    - name: Validate inputs
+      if: inputs.gh-auth-setup-git == 'true' && inputs.gh-auth-login != 'true'
+      run: |
+        echo "::error::'gh-auth-setup-git' requires 'gh-auth-login' to be enabled."
+        exit 1
+      shell: bash
     - uses: actions/create-github-app-token@v3
       id: app-token
       with:
@@ -136,14 +146,19 @@ runs:
         APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
         GH_TOKEN: ${{ steps.app-token.outputs.token }}
     - if: inputs.gh-auth-login == 'true'
+      name: Authenticate GitHub CLI
       run: |
         gh auth login --with-token <<< "$TOKEN"
         gh auth status
-        gh auth setup-git
       shell: bash
       env:
         TOKEN: ${{ steps.app-token.outputs.token }}
+    - if: inputs.gh-auth-setup-git == 'true'
+      name: Configure Git authentication
+      run: gh auth setup-git
+      shell: bash
     - if: inputs.set-git-user == 'true'
+      name: Configure Git identity
       run: |
         git config --global user.name "${APP_SLUG}[bot]"
         git config --global user.email "${APP_USER_ID}+${APP_SLUG}[bot]@users.noreply.github.com"
